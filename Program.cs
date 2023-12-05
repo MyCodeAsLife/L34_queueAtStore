@@ -14,7 +14,7 @@ namespace L34_queueAtStore
             int maxValue = 30;
             int wallet = 0;
 
-            Queue<int> buyers = GetQueueBuyers(ref minValue, ref maxValue);
+            Queue<int> buyers = GetQueueBuyers(minValue, maxValue);
             ServeClients(ref buyers, ref wallet);
         }
 
