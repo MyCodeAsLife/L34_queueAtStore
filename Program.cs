@@ -18,7 +18,7 @@ namespace L34_queueAtStore
             ServeClients(ref buyers, ref wallet);
         }
 
-        static Queue<int> GetQueueBuyers(ref int minValue, ref int maxValue)
+        static Queue<int> GetQueueBuyers(int minValue, int maxValue)
         {
             Random random = new Random();
             Queue<int> tempQueue = new Queue<int>();
