@@ -14,7 +14,7 @@ namespace L34_queueAtStore
             Queue<int> buyers = new Queue<int>();
 
             FillQueue(buyers);
-            wallet = ServeClients(buyers, wallet);
+            wallet += ServeClients(buyers);
         }
 
         static void FillQueue(Queue<int> queue)
@@ -27,12 +27,14 @@ namespace L34_queueAtStore
                 queue.Enqueue(random.Next(minValue, maxValue + 1));
         }
 
-        static int ServeClients(Queue<int> queue, int wallet)
+        static int ServeClients(Queue<int> queue)
         {
+            int tempWallet = 0;
+
             while (queue.Count > 0)
             {
-                wallet += queue.Dequeue();
-                Console.WriteLine($"Клиент обслужен, текущая сумма на счету: {wallet} деревянных.");
+                tempWallet += queue.Dequeue();
+                Console.WriteLine($"Клиент обслужен, текущая сумма на счету: {tempWallet} деревянных.");
                 Console.WriteLine($"Клиентов в очереди осталось: {queue.Count}.\n");
 
                 Console.WriteLine("Для продолжения обслуживания клиентов, нажмите любую клавишу...");
@@ -40,8 +42,8 @@ namespace L34_queueAtStore
                 Console.Clear();
             }
 
-            Console.WriteLine($"Все клиенты обслуженны.\nИтоговая сумма на счету: {wallet} деревянных.\n");
-            return wallet;
+            Console.WriteLine($"Все клиенты обслуженны.\nИтоговая сумма на счету: {tempWallet} деревянных.\n");
+            return tempWallet;
         }
     }
 }
