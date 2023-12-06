@@ -15,7 +15,7 @@ namespace L34_queueAtStore
             int wallet = 0;
 
             Queue<int> buyers = GetQueueBuyers(minValue, maxValue);
-            ServeClients(ref buyers, ref wallet);
+            ServeClients(buyers, ref wallet);
         }
 
         static Queue<int> GetQueueBuyers(int minValue, int maxValue)
@@ -29,11 +29,9 @@ namespace L34_queueAtStore
             return tempQueue;
         }
 
-        static void ServeClients(ref Queue<int> queue, ref int wallet)
+        static void ServeClients(Queue<int> queue, ref int wallet)
         {
-            int queueLenght = queue.Count;
-
-            for (int i = 0; i < queueLenght; i++)
+            while (queue.Count > 0)
             {
                 wallet += queue.Dequeue();
                 Console.WriteLine($"Клиент обслужен, текущая сумма на счету: {wallet} деревянных.");
