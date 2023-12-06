@@ -10,26 +10,24 @@ namespace L34_queueAtStore
     {
         static void Main(string[] args)
         {
-            int minValue = 10;
-            int maxValue = 30;
             int wallet = 0;
+            Queue<int> buyers = new Queue<int>();
 
-            Queue<int> buyers = GetQueueBuyers(minValue, maxValue);
-            ServeClients(buyers, ref wallet);
+            FillQueue(buyers);
+            wallet = ServeClients(buyers, wallet);
         }
 
-        static Queue<int> GetQueueBuyers(int minValue, int maxValue)
+        static void FillQueue(Queue<int> queue)
         {
             Random random = new Random();
-            Queue<int> tempQueue = new Queue<int>();
+            int minValue = 10;
+            int maxValue = 30;
 
             for (int i = minValue; i <= maxValue; i++)
-                tempQueue.Enqueue(random.Next(minValue, maxValue + 1));
-
-            return tempQueue;
+                queue.Enqueue(random.Next(minValue, maxValue + 1));
         }
 
-        static void ServeClients(Queue<int> queue, ref int wallet)
+        static int ServeClients(Queue<int> queue, int wallet)
         {
             while (queue.Count > 0)
             {
@@ -43,6 +41,7 @@ namespace L34_queueAtStore
             }
 
             Console.WriteLine($"Все клиенты обслуженны.\nИтоговая сумма на счету: {wallet} деревянных.\n");
+            return wallet;
         }
     }
 }
