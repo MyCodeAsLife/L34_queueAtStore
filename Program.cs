@@ -15,6 +15,7 @@ namespace L34_queueAtStore
 
             FillQueue(buyers);
             wallet += ServeClients(buyers);
+            Console.WriteLine($"Все клиенты обслуженны.\nИтоговая сумма на счету: {wallet} деревянных.\n");
         }
 
         static void FillQueue(Queue<int> queue)
@@ -42,7 +43,6 @@ namespace L34_queueAtStore
                 Console.Clear();
             }
 
-            Console.WriteLine($"Все клиенты обслуженны.\nИтоговая сумма на счету: {tempWallet} деревянных.\n");
             return tempWallet;
         }
     }
